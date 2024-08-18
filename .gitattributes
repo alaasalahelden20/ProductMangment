@@ -1,0 +1,20 @@
+# Enforce Unix newlines
+* text eol=lf
+
+# binaries
+*.ai binary
+*.psd binary
+*.jpg binary
+*.gif binary
+*.png binary
+*.jpeg binary
+
+# Set the default behavior,
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted to LF.
+*.py text eol=lf
+*.sh text eol=lf
+
+# Declare files that will always have CRLF line endings on checkout.
+*.bat text eol=crlf

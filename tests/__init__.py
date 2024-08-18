@@ -1,0 +1,1 @@
+from .conftest import create_app
