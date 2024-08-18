@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: sqlite
+    volumes:
+      - ./data:/data
+    environment:
+      SQLITE_DB_PATH: /data/db.sqlite

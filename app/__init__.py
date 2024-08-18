@@ -18,7 +18,7 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    api = Api(app, version='1.0', title='Product app', description='A Product managment application')
+    api = Api(app, version='1.0', title='Product managment System', description='A Product managment application')
 
     CORS(app, supports_credentials=True, resources={r"/*": {"origins":  "http://localhost:3000"}})
     db.init_app(app)
@@ -30,10 +30,7 @@ def create_app(config_class=Config):
 
     
  
-    # Register blueprints
-
-    # Blueprints allow us to group related routes together for better modularity and maintainability.
-    #app.register_blueprint(auth_bp, url_prefix='/auth')
+   
 
 # Flask-RESTx Namespaces help with API documentation, defining models, and organizing endpoints.
     api.add_namespace(ProductNamespace, path='/products')
