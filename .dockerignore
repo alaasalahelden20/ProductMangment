@@ -1,0 +1,10 @@
+node_modules
+.git
+*.log
+.vscode
+.pytest_cache
+*.pyc
+*.pyo
+__pycache__
+frontend
+frontend-app
