@@ -7,4 +7,5 @@ node_modules
 *.pyo
 __pycache__
 frontend
-frontend-app
+frontend-app/node_modules
+fly.toml

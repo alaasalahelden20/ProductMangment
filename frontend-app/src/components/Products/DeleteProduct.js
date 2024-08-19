@@ -2,13 +2,14 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+const apiUrl = process.env.REACT_APP_API_URL;
 const DeleteProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:5000/products/${id}`,{
+            await axios.delete(`${apiUrl}/products/${id}`,{
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'

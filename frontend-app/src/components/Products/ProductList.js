@@ -3,12 +3,9 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import { Container, Button, Table, Alert, Spinner } from 'reactstrap';
-const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000',
-    headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-    }
-});
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -19,9 +16,9 @@ const ProductList = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axiosInstance.get('/products/');
-                setProducts(response.data);
-                setLoading(false);
+                const response = await fetch(`${apiUrl}/products/`);
+                const data = await response.json();
+                setProducts(data);
             } catch (error) {
                 setError(error.message || 'Error fetching products');
                 setLoading(false);
@@ -33,7 +30,7 @@ const ProductList = () => {
         };
 
         fetchProducts();
-    }, []);
+    },[]);
 
     const handleRowClick = (id) => {
         navigate(`/products/${id}`); // Redirect to product details page

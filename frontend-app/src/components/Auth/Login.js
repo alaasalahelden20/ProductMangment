@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -15,7 +16,7 @@ const Login = () => {
         setLoading(true); // Show loading indicator
 
         try {
-            const response = await axios.post('http://localhost:5000/auth/login', { username, password });
+            const response = await axios.post(`${apiUrl}/auth/login`, { username, password });
             localStorage.setItem('token', response.data.access_token);
             navigate('/products');
         } catch (error) {
