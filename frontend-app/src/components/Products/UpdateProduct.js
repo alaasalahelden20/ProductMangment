@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const UpdateProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ const UpdateProduct = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/products/${id}`);
+                const response = await axios.get(`${apiUrl}/products/${id}`);
                 setProduct(response.data);
             } catch (error) {
                 setError('Error fetching product details.');
@@ -57,7 +59,7 @@ const UpdateProduct = () => {
     
         try {
             const { name, price, description, quantity } = product;
-            await axios.put(`http://localhost:5000/products/${id}`, { name,description, price , quantity }, {
+            await axios.put(`${apiUrl}/products/${id}`, { name,description, price , quantity }, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
