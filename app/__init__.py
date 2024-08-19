@@ -20,7 +20,7 @@ def create_app(config_class=Config):
 
     api = Api(app, version='1.0', title='Product managment System', description='A Product managment application')
 
-    CORS(app, supports_credentials=True, resources={r"/*": {"origins":  "http://localhost:3000"}})
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins":  "https://product-mangment-r2kjpkjaf-alaa-salaheldens-projects.vercel.app/"}})
     db.init_app(app)
     jwt = JWTManager(app)
     jwt._set_error_handler_callbacks(api)
