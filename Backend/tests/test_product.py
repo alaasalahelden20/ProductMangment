@@ -6,7 +6,7 @@ from services.product_service import ProductService
 from schemas.productSchema import ProductSchema
 from exceptions.productExceptions import ProductNotFoundError
 from unittest.mock import patch
-from config import TestConfig
+from Backend.config import TestConfig
 import datetime
 # Test Configuration
 

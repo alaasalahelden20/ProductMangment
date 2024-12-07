@@ -8,8 +8,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key')  # Provide a default secret key
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'your-jwt-secret-key')
-    JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES')))# Set the access token expiration to 1 hour
-    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=int(os.getenv('JWT_REFRESH_TOKEN_EXPIRES')))   # Set the refresh token expiration to 7 days
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES',3600)))# Set the access token expiration to 1 hour
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=int(os.getenv('JWT_REFRESH_TOKEN_EXPIRES',3600)))   # Set the refresh token expiration to 7 days
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=7)  # Set the refresh token expiration to 7 days
 
 

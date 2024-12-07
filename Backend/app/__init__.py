@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
-from config import Config,TestConfig
+from config import Config, TestConfig
 from flask_jwt_extended import JWTManager
 from flask_restful import Api
 from models.dp import db, ma
@@ -22,9 +22,9 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     api = Api(app, version='1.0', title='Product managment System', description='A Product managment application')
-    allowed_origins = os.getenv('ALLOWED_ORIGINS').split(',')
+    allowed_origins = "http://localhost:3000"
 
-    CORS(app, supports_credentials=True, resources={r"/*": {"origins": allowed_origins}})
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
     db.init_app(app)
     jwt = JWTManager(app)
     jwt._set_error_handler_callbacks(api)
