@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const apiUrl = process.env.REACT_APP_API_URL;
-console.log("API URL:", process.env.REACT_APP_API_URL);
+console.log("API URL:", apiUrl);
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -20,6 +20,7 @@ const Login = () => {
             
             const response = await axios.post(`${apiUrl}/auth/login`, { username, password });
             localStorage.setItem('token', response.data.access_token);
+            console.log("Login successful:", response.data);
             navigate('/products');
         } catch (error) {
             console.error('Error logging in:', error);

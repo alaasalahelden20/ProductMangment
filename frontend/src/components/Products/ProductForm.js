@@ -41,7 +41,7 @@ const ProductForm = () => {
         setError('');
     
         try {
-            const response = await axios.post(`${apiUrl}/products/`, 
+            const response = await axios.post(`${apiUrl}/products`, 
                 { name, description, price, quantity }, 
                 {
                     headers: {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button, Spinner, Input, Form, FormGroup, Label } from 'reactstrap';
 const apiUrl = process.env.REACT_APP_API_URL;
+console.log("API URL:", process.env.REACT_APP_API_URL);
 
 const Register = () => {
     const [username, setUsername] = useState('');

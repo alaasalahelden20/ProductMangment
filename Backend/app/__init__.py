@@ -22,9 +22,10 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     api = Api(app, version='1.0', title='Product managment System', description='A Product managment application')
-    allowed_origins = "http://localhost:3000"
+    allowed_origins = os.getenv('ALLOWED_ORIGINS').split(',')
 
-    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": allowed_origins}})
+
     db.init_app(app)
     jwt = JWTManager(app)
     jwt._set_error_handler_callbacks(api)
